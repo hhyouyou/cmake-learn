@@ -1,6 +1,0 @@
-/home/djx/Desktop/cmake-learn/build/CMakeFiles/rebuild_cache.dir
-/home/djx/Desktop/cmake-learn/build/CMakeFiles/CalculateSqrt.dir
-/home/djx/Desktop/cmake-learn/build/CMakeFiles/edit_cache.dir
-/home/djx/Desktop/cmake-learn/build/MathFunctions/CMakeFiles/rebuild_cache.dir
-/home/djx/Desktop/cmake-learn/build/MathFunctions/CMakeFiles/MathFunctions.dir
-/home/djx/Desktop/cmake-learn/build/MathFunctions/CMakeFiles/edit_cache.dir
