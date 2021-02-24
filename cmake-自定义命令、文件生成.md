@@ -46,12 +46,16 @@ int main(int argc, char *argv[]) {
 
 > 该文件就是一个c++代码，接收一个文件路径的参数，新建文件并写入常用平方根结果，保存文件。
 
+
+
 接下来我们将该文件在`CMakeLists.txt`中添加为可执行文件
 
 ```cmake
 # first we add the executable that generates the table
 add_executable(MakeTable MakeTable.cxx)
 ```
+
+
 
 然后自定义一个命令，并让cmake在编译过程中，执行这个命令，即通过`COMMAND`来执行`MakeTable` 并输入参数 `${CMAKE_CURRENT_BINARY_DIR}/Table.h`。
 
@@ -64,11 +68,15 @@ add_custom_command (
   )
 ```
 
+
+
 接下来我们要让`CMake`知道`mysqrt.cpp`依赖于生成的文件表(`Table.h`)。这是通过添加生成的`Table.h`文件到MathFunctions库来实现的。
 
 ```cmake
 add_library(MathFunctions MySqrt.cpp ${CMAKE_CURRENT_BINARY_DIR}/Table.h)
 ```
+
+
 
 我们还必须将当前的二进制目录添加到包含目录的列表中，因为生成的表在二进制目录中，这样库就可以找到并包含在`mysqrt.cpp`中
 
@@ -76,6 +84,8 @@ add_library(MathFunctions MySqrt.cpp ${CMAKE_CURRENT_BINARY_DIR}/Table.h)
 # add the binary tree directory to the search path for include files
 include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 ```
+
+
 
 最后修改一下 `MySqrt.cpp`, 使用我们预先生成的平方根表
 
@@ -92,7 +102,7 @@ if (x >= 1 && x < 10) {
 
 
 
-接下来就是编译执行。
+编译执行。
 
 ```
 cmake ..
@@ -103,7 +113,7 @@ Computing sqrt of 3 to be 1.73205
 The square root of 3 is 1.73205
 ```
 
-也可以查看`/build/MathFunctions/Table.h`   这个文件
+也可以直接查看`/build/MathFunctions/Table.h`   这个文件来验证结果
 
 ```shell
 cat MathFunctions/Table.h
@@ -120,16 +130,6 @@ double sqrtTable[] = {
 3,
 0};
 ```
-
-
-
-
-
-
-
-
-
-
 
 
 
